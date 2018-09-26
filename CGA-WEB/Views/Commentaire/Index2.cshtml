@@ -1,0 +1,312 @@
+﻿
+@model CGA_WEB.Models.CommentaireModels
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        .panel-shadow {
+            box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+        }
+
+        .panel-white {
+            border: 1px solid #dddddd;
+        }
+
+            .panel-white .panel-heading {
+                color: #333;
+                background-color: #fff;
+                border-color: #ddd;
+            }
+
+            .panel-white .panel-footer {
+                background-color: #fff;
+                border-color: #ddd;
+            }
+
+        .post .post-heading {
+            height: 95px;
+            padding: 20px 15px;
+        }
+
+            .post .post-heading .avatar {
+                width: 60px;
+                height: 60px;
+                display: block;
+                margin-right: 15px;
+            }
+
+            .post .post-heading .meta .title {
+                margin-bottom: 0;
+            }
+
+                .post .post-heading .meta .title a {
+                    color: black;
+                }
+
+                    .post .post-heading .meta .title a:hover {
+                        color: #aaaaaa;
+                    }
+
+            .post .post-heading .meta .time {
+                margin-top: 8px;
+                color: #999;
+            }
+
+        .post .post-image .image {
+            width: 100%;
+            height: auto;
+        }
+
+        .post .post-description {
+            padding: 15px;
+        }
+
+            .post .post-description p {
+                font-size: 14px;
+            }
+
+            .post .post-description .stats {
+                margin-top: 20px;
+            }
+
+                .post .post-description .stats .stat-item {
+                    display: inline-block;
+                    margin-right: 15px;
+                }
+
+                    .post .post-description .stats .stat-item .icon {
+                        margin-right: 8px;
+                    }
+
+        .post .post-footer {
+            border-top: 1px solid #ddd;
+            padding: 15px;
+        }
+
+            .post .post-footer .input-group-addon a {
+                color: #454545;
+            }
+
+            .post .post-footer .comments-list {
+                padding: 0;
+                margin-top: 20px;
+                list-style-type: none;
+            }
+
+                .post .post-footer .comments-list .comment {
+                    display: block;
+                    width: 100%;
+                    margin: 20px 0;
+                }
+
+                    .post .post-footer .comments-list .comment .avatar {
+                        width: 35px;
+                        height: 35px;
+                    }
+
+                    .post .post-footer .comments-list .comment .comment-heading {
+                        display: block;
+                        width: 100%;
+                    }
+
+                        .post .post-footer .comments-list .comment .comment-heading .user {
+                            font-size: 14px;
+                            font-weight: bold;
+                            display: inline;
+                            margin-top: 0;
+                            margin-right: 10px;
+                        }
+
+                        .post .post-footer .comments-list .comment .comment-heading .time {
+                            font-size: 12px;
+                            color: #aaa;
+                            margin-top: 0;
+                            display: inline;
+                        }
+
+                    .post .post-footer .comments-list .comment .comment-body {
+                        margin-left: 50px;
+                    }
+
+                    .post .post-footer .comments-list .comment > .comments-list {
+                        margin-left: 50px;
+                    }
+
+        .notf {
+            background-color: #dfedff;
+            color: black;
+            position: absolute;
+            width: 300px;
+            right: 0px;
+            text-align: center;
+            border-bottom: 3px;
+            border-color: black;
+        }
+    </style>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script>
+    //$(function () {
+    //    $("#close").click(function () {
+    //        $("#notification").slideUp('slow');
+
+    //    })
+    //    $("#not").click(function () {
+    //        $("#notification").slideDown('slow');
+
+    //    })
+
+
+
+    //});
+
+        function myFunction() {
+            var x = document.getElementById("notification");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="@Url.Action("Policy", "Commentaire")"> Policy</a>
+            </div>
+
+            <span class="topbar-badge animated rubberBand" style="color:red;">@Html.Encode(ViewData["nbreC"])</span>
+            <span class="topbar-item-name"></span>
+            <div style="padding-right:10px">
+                <button class="btn btn-link" onclick="myFunction()" id="not">Notification</button>
+
+
+
+            </div>
+        </div>
+    </nav>+
+    <div id="notification" class="notf" style="display:none">
+
+        @foreach (var item in Model.users)
+        {
+
+
+            <p>   @Html.DisplayFor(modelItem => item.firstName) was comment</p>
+
+
+
+        }
+        <button type="button" class="close" aria-label="Close" id="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="title h5" style="margin-left:20px">
+        <b> nbre de commentaires @Html.Encode(ViewData["nbre"])</b>
+
+    </div>
+    <br />
+    <div class="title h5" style="margin-left:20px">
+        @ViewBag.err
+    </div>
+
+    <div class="container" style="width:80%;margin-left:20px;">
+        <div class="row" style="height:0px;">
+            @foreach (var item in Model.commentaires)
+            {
+                <div class="col-sm-8">
+                    <div class="panel panel-white post panel-shadow">
+                        <div class="post-heading">
+                            <div class="pull-left image">
+                                <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                            </div>
+                            <div class="pull-left meta">
+                                <div class="title h5">
+                                    <a href="#"><b>@Html.DisplayFor(modelItem => item.date)</b></a>
+
+                                </div>
+                                @if (item.user_id == 1)
+                                { <h6 class="text-muted time"> ahmed</h6>}
+                                @if (item.user_id == 2)
+                                { <h6 class="text-muted time"> sami</h6>}
+                                @if (item.user_id == 3)
+                                { <h6 class="text-muted time"> Emna</h6>}
+                            </div>
+                        </div>
+                        <div class="post-description">
+                            <p>@Html.DisplayFor(modelItem => item.text)</p>
+                            <div class="stats">
+
+                                <a href="@Url.Action("Like", "Commentaire", new { id = item.id })" class="btn btn-default stat-item">
+                                    <i class="fa fa-thumbs-up icon"></i>@Html.DisplayFor(modelItem => item.like)
+                                </a>
+                                <br />
+                                @if (item.user_id == 1)
+                                {
+
+                                    <a href="@Url.Action("Edit", "Commentaire", new { id = item.id })" style="color:forestgreen" class="btn btn-default btn-sm">
+                                        <i class="glyphicon glyphicon-edit"></i>
+                                        <span>
+                                            <strong>Edit</strong>
+                                        </span>
+                                    </a>
+
+
+
+                                        <a href="@Url.Action("delete", "Commentaire", new { id = item.id })" style="color:forestgreen" class="btn btn-default btn-sm">
+                                            <i class="glyphicon btn-default"></i>
+                                            <span>
+                                                <strong>delete</strong>
+                                            </span>
+                                        </a>
+
+
+
+
+                                }
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            <b> @ViewBag.MyMessage</b>
+
+            @using (Html.BeginForm("Create", "Commentaire"))
+            {
+                <input type="text" id="txt" name="txt" class="form-control" rows="3" />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" id="comment" class="btn-info" />
+                    </div>
+            }
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>

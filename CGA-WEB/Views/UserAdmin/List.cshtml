@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Domain.Entities.user>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DTYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.expertiseLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cin1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cin2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.delivredIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.driverLicenseNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.insurance_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DTYPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.role)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.expertiseLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cin1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cin2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.delivredIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.driverLicenseNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.insurance_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

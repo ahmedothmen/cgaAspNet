@@ -1,0 +1,74 @@
+﻿@model Domain.Entities.contract
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>contract</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.costContract)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costContract)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateSending)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateSending)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.etat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.etat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.insured_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.insured_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.policy_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.policy_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
